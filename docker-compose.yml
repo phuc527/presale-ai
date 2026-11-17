@@ -1,0 +1,15 @@
+services:
+  presales-ai:
+    build: .
+    container_name: presales-ai-command-center
+    ports:
+      - "127.0.0.1:8080:8080"
+    env_file:
+      - .env.example
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
